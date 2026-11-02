@@ -176,7 +176,7 @@ VALUES (
   '00000000-0000-0000-0000-000000000101',
   'Biryani House',
   'Authentic Pakistani biryani and traditional dishes',
-  'https://via.placeholder.com/400x300?text=Biryani+House',
+  'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=800&q=80',
   'Pakistani',
   '02135123456',
   'Shop 12, Food Court',
@@ -203,7 +203,7 @@ VALUES (
   '00000000-0000-0000-0000-000000000101',
   'Pizza Palace',
   'Italian pizzas, pastas, and continental cuisine',
-  'https://via.placeholder.com/400x300?text=Pizza+Palace',
+  'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80',
   'Italian',
   '02135654321',
   'Block 5, Phase 2',
@@ -230,7 +230,7 @@ VALUES (
   '00000000-0000-0000-0000-000000000102',
   'Burger King',
   'Gourmet burgers, fries, and fast food favorites',
-  'https://via.placeholder.com/400x300?text=Burger+King',
+  'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80',
   'American',
   '02135999999',
   'Marina Complex',
@@ -280,13 +280,13 @@ ON CONFLICT DO NOTHING;
 
 INSERT INTO menu_items (id, restaurant_id, category_id, name, description, price_pkr, image_url, is_available)
 VALUES
-  ('40000000-0000-0000-0000-000000000001', '20000000-0000-0000-0000-000000000001', '30000000-0000-0000-0000-000000000001', 'Chicken Biryani', 'Fragrant rice with tender chicken pieces', 450, 'https://via.placeholder.com/300x200?text=Chicken+Biryani', true),
-  ('40000000-0000-0000-0000-000000000002', '20000000-0000-0000-0000-000000000001', '30000000-0000-0000-0000-000000000001', 'Mutton Biryani', 'Premium biryani with tender mutton', 550, 'https://via.placeholder.com/300x200?text=Mutton+Biryani', true),
-  ('40000000-0000-0000-0000-000000000003', '20000000-0000-0000-0000-000000000001', '30000000-0000-0000-0000-000000000001', 'Fish Biryani', 'Aromatic rice with fresh fish', 500, 'https://via.placeholder.com/300x200?text=Fish+Biryani', true),
-  ('40000000-0000-0000-0000-000000000004', '20000000-0000-0000-0000-000000000001', '30000000-0000-0000-0000-000000000002', 'Chicken Karahi', 'Succulent chicken cooked in traditional karahi', 400, 'https://via.placeholder.com/300x200?text=Chicken+Karahi', true),
-  ('40000000-0000-0000-0000-000000000005', '20000000-0000-0000-0000-000000000001', '30000000-0000-0000-0000-000000000002', 'Mutton Karahi', 'Tender mutton in aromatic karahi gravy', 480, 'https://via.placeholder.com/300x200?text=Mutton+Karahi', true),
-  ('40000000-0000-0000-0000-000000000006', '20000000-0000-0000-0000-000000000001', '30000000-0000-0000-0000-000000000003', 'Mango Lassi', 'Refreshing yogurt drink with mango pulp', 120, 'https://via.placeholder.com/300x200?text=Mango+Lassi', true),
-  ('40000000-0000-0000-0000-000000000007', '20000000-0000-0000-0000-000000000001', '30000000-0000-0000-0000-000000000003', 'Complimentary Kheer', 'Sweet rice pudding dessert', 100, 'https://via.placeholder.com/300x200?text=Kheer', true)
+  ('40000000-0000-0000-0000-000000000001', '20000000-0000-0000-0000-000000000001', '30000000-0000-0000-0000-000000000001', 'Chicken Biryani', 'Fragrant basmati rice with tender spiced chicken', 450, 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=600&q=80', true),
+  ('40000000-0000-0000-0000-000000000002', '20000000-0000-0000-0000-000000000001', '30000000-0000-0000-0000-000000000001', 'Mutton Biryani', 'Premium biryani with succulent tender mutton', 550, 'https://images.unsplash.com/photo-1633964913295-ceb43826e7c9?auto=format&fit=crop&w=600&q=80', true),
+  ('40000000-0000-0000-0000-000000000003', '20000000-0000-0000-0000-000000000001', '30000000-0000-0000-0000-000000000001', 'Fish Biryani', 'Aromatic spiced rice with fresh coastal fish', 500, 'https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=600&q=80', true),
+  ('40000000-0000-0000-0000-000000000004', '20000000-0000-0000-0000-000000000001', '30000000-0000-0000-0000-000000000002', 'Chicken Karahi', 'Succulent chicken in rich tomato and ginger karahi gravy', 400, 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=600&q=80', true),
+  ('40000000-0000-0000-0000-000000000005', '20000000-0000-0000-0000-000000000001', '30000000-0000-0000-0000-000000000002', 'Mutton Karahi', 'Tender mutton in aromatic traditional wok gravy', 480, 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80', true),
+  ('40000000-0000-0000-0000-000000000006', '20000000-0000-0000-0000-000000000001', '30000000-0000-0000-0000-000000000003', 'Mango Lassi', 'Refreshing sweet yogurt drink with fresh mango pulp', 120, 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=600&q=80', true),
+  ('40000000-0000-0000-0000-000000000007', '20000000-0000-0000-0000-000000000001', '30000000-0000-0000-0000-000000000003', 'Royal Kheer', 'Traditional sweet rice pudding with pistachios', 100, 'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=600&q=80', true)
 ON CONFLICT DO NOTHING;
 
 -- ============================================================================
@@ -295,13 +295,13 @@ ON CONFLICT DO NOTHING;
 
 INSERT INTO menu_items (id, restaurant_id, category_id, name, description, price_pkr, image_url, is_available)
 VALUES
-  ('40000000-0000-0000-0000-000000000011', '20000000-0000-0000-0000-000000000002', '30000000-0000-0000-0000-000000000011', 'Margherita Pizza', 'Classic pizza with fresh mozzarella and basil', 750, 'https://via.placeholder.com/300x200?text=Margherita+Pizza', true),
-  ('40000000-0000-0000-0000-000000000012', '20000000-0000-0000-0000-000000000002', '30000000-0000-0000-0000-000000000011', 'Pepperoni Pizza', 'Pizza topped with pepperoni and cheese', 850, 'https://via.placeholder.com/300x200?text=Pepperoni+Pizza', true),
-  ('40000000-0000-0000-0000-000000000013', '20000000-0000-0000-0000-000000000002', '30000000-0000-0000-0000-000000000011', 'Veggie Supreme Pizza', 'Mixed vegetables with mozzarella', 800, 'https://via.placeholder.com/300x200?text=Veggie+Pizza', true),
-  ('40000000-0000-0000-0000-000000000014', '20000000-0000-0000-0000-000000000002', '30000000-0000-0000-0000-000000000012', 'Fettuccini Alfredo', 'Creamy alfredo pasta with garlic bread', 550, 'https://via.placeholder.com/300x200?text=Fettuccini+Alfredo', true),
-  ('40000000-0000-0000-0000-000000000015', '20000000-0000-0000-0000-000000000002', '30000000-0000-0000-0000-000000000012', 'Spaghetti Carbonara', 'Italian spaghetti with bacon and cream sauce', 600, 'https://via.placeholder.com/300x200?text=Carbonara', true),
-  ('40000000-0000-0000-0000-000000000016', '20000000-0000-0000-0000-000000000002', '30000000-0000-0000-0000-000000000013', 'Tiramisu', 'Classic Italian dessert', 350, 'https://via.placeholder.com/300x200?text=Tiramisu', true),
-  ('40000000-0000-0000-0000-000000000017', '20000000-0000-0000-0000-000000000002', '30000000-0000-0000-0000-000000000013', 'Chocolate Cake', 'Rich chocolate cake slice', 300, 'https://via.placeholder.com/300x200?text=Chocolate+Cake', true)
+  ('40000000-0000-0000-0000-000000000011', '20000000-0000-0000-0000-000000000002', '30000000-0000-0000-0000-000000000011', 'Margherita Pizza', 'Classic wood-fired pizza with fresh mozzarella and basil', 750, 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=600&q=80', true),
+  ('40000000-0000-0000-0000-000000000012', '20000000-0000-0000-0000-000000000002', '30000000-0000-0000-0000-000000000011', 'Pepperoni Pizza', 'Loaded with spicy pepperoni and melted cheese', 850, 'https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=600&q=80', true),
+  ('40000000-0000-0000-0000-000000000013', '20000000-0000-0000-0000-000000000002', '30000000-0000-0000-0000-000000000011', 'Veggie Supreme Pizza', 'Fresh garden vegetables with mozzarella cheese', 800, 'https://images.unsplash.com/photo-1511690656952-34342bb7c2f2?auto=format&fit=crop&w=600&q=80', true),
+  ('40000000-0000-0000-0000-000000000014', '20000000-0000-0000-0000-000000000002', '30000000-0000-0000-0000-000000000012', 'Fettuccini Alfredo', 'Creamy alfredo pasta served with warm garlic bread', 550, 'https://images.unsplash.com/photo-1645112411341-6c4fd023714a?auto=format&fit=crop&w=600&q=80', true),
+  ('40000000-0000-0000-0000-000000000015', '20000000-0000-0000-0000-000000000002', '30000000-0000-0000-0000-000000000012', 'Spaghetti Carbonara', 'Classic Italian spaghetti with savory cream sauce', 600, 'https://images.unsplash.com/photo-1612874742237-6526221588e3?auto=format&fit=crop&w=600&q=80', true),
+  ('40000000-0000-0000-0000-000000000016', '20000000-0000-0000-0000-000000000002', '30000000-0000-0000-0000-000000000013', 'Tiramisu', 'Layered Italian coffee-flavored dessert', 350, 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=600&q=80', true),
+  ('40000000-0000-0000-0000-000000000017', '20000000-0000-0000-0000-000000000002', '30000000-0000-0000-0000-000000000013', 'Chocolate Fudge Cake', 'Rich moist chocolate cake slice', 300, 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80', true)
 ON CONFLICT DO NOTHING;
 
 -- ============================================================================
@@ -310,13 +310,13 @@ ON CONFLICT DO NOTHING;
 
 INSERT INTO menu_items (id, restaurant_id, category_id, name, description, price_pkr, image_url, is_available)
 VALUES
-  ('40000000-0000-0000-0000-000000000021', '20000000-0000-0000-0000-000000000003', '30000000-0000-0000-0000-000000000021', 'Classic Burger', 'Beef patty with lettuce, tomato, and sauce', 350, 'https://via.placeholder.com/300x200?text=Classic+Burger', true),
-  ('40000000-0000-0000-0000-000000000022', '20000000-0000-0000-0000-000000000003', '30000000-0000-0000-0000-000000000021', 'Double Cheese Burger', 'Double beef patties with extra cheese', 450, 'https://via.placeholder.com/300x200?text=Double+Cheese+Burger', true),
-  ('40000000-0000-0000-0000-000000000023', '20000000-0000-0000-0000-000000000003', '30000000-0000-0000-0000-000000000021', 'Crispy Chicken Burger', 'Crispy fried chicken breast burger', 400, 'https://via.placeholder.com/300x200?text=Chicken+Burger', true),
-  ('40000000-0000-0000-0000-000000000024', '20000000-0000-0000-0000-000000000003', '30000000-0000-0000-0000-000000000022', 'French Fries', 'Golden crispy fries', 180, 'https://via.placeholder.com/300x200?text=French+Fries', true),
-  ('40000000-0000-0000-0000-000000000025', '20000000-0000-0000-0000-000000000003', '30000000-0000-0000-0000-000000000022', 'Onion Rings', 'Crispy fried onion rings', 200, 'https://via.placeholder.com/300x200?text=Onion+Rings', true),
-  ('40000000-0000-0000-0000-000000000026', '20000000-0000-0000-0000-000000000003', '30000000-0000-0000-0000-000000000023', 'Coca Cola (330ml)', 'Cold Coca Cola', 80, 'https://via.placeholder.com/300x200?text=Cola', true),
-  ('40000000-0000-0000-0000-000000000027', '20000000-0000-0000-0000-000000000003', '30000000-0000-0000-0000-000000000023', 'Lemonade (330ml)', 'Fresh lemonade', 90, 'https://via.placeholder.com/300x200?text=Lemonade', true)
+  ('40000000-0000-0000-0000-000000000021', '20000000-0000-0000-0000-000000000003', '30000000-0000-0000-0000-000000000021', 'Classic Burger', 'Juicy beef patty with fresh lettuce, tomato, and signature sauce', 350, 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80', true),
+  ('40000000-0000-0000-0000-000000000022', '20000000-0000-0000-0000-000000000003', '30000000-0000-0000-0000-000000000021', 'Double Cheese Burger', 'Double beef patties with double melted cheddar', 450, 'https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=600&q=80', true),
+  ('40000000-0000-0000-0000-000000000023', '20000000-0000-0000-0000-000000000003', '30000000-0000-0000-0000-000000000021', 'Crispy Chicken Burger', 'Golden fried chicken breast fillet with creamy slaw', 400, 'https://images.unsplash.com/photo-1625813506062-0aeb1d7a094b?auto=format&fit=crop&w=600&q=80', true),
+  ('40000000-0000-0000-0000-000000000024', '20000000-0000-0000-0000-000000000003', '30000000-0000-0000-0000-000000000022', 'French Fries', 'Golden crispy salted potato fries', 180, 'https://images.unsplash.com/photo-1576107232684-1279f3908591?auto=format&fit=crop&w=600&q=80', true),
+  ('40000000-0000-0000-0000-000000000025', '20000000-0000-0000-0000-000000000003', '30000000-0000-0000-0000-000000000022', 'Onion Rings', 'Crispy battered onion rings with dip', 200, 'https://images.unsplash.com/photo-1639024471283-03518883512d?auto=format&fit=crop&w=600&q=80', true),
+  ('40000000-0000-0000-0000-000000000026', '20000000-0000-0000-0000-000000000003', '30000000-0000-0000-0000-000000000023', 'Coca Cola (330ml)', 'Chilled refreshing Coca Cola can', 80, 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=600&q=80', true),
+  ('40000000-0000-0000-0000-000000000027', '20000000-0000-0000-0000-000000000003', '30000000-0000-0000-0000-000000000023', 'Fresh Lemonade', 'Zesty homemade mint lemonade', 90, 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80', true)
 ON CONFLICT DO NOTHING;
 
 -- ============================================================================
