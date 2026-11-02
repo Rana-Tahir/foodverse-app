@@ -1,39 +1,49 @@
 'use client';
 
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useAuth } from '@/features/auth/use-auth';
+import { Search, MapPin, ArrowRight, ShieldCheck, Clock, Utensils } from 'lucide-react';
 
 export default function HomePage() {
+  const router = useRouter();
   const { user, isAuthenticated, signOut } = useAuth();
+  const [area, setArea] = useState('');
+
+  const handleFindFood = (e: React.FormEvent) => {
+    e.preventDefault();
+    router.push(area.trim() ? `/?search=${encodeURIComponent(area)}` : '/');
+  };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="min-h-screen bg-slate-50 flex flex-col font-sans">
       {/* Header */}
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
+      <header className="bg-white/80 backdrop-blur-md border-b border-purple-100 sticky top-0 z-50 shadow-xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <Link href="/" className="text-2xl font-bold text-red-600">
+            <Link href="/" className="text-2xl font-black bg-gradient-to-r from-purple-700 to-indigo-600 bg-clip-text text-transparent">
               Foodverse
             </Link>
-            <span className="text-xs bg-red-100 text-red-800 px-2 py-0.5 rounded-full font-medium">
+            <span className="text-xs bg-purple-100 text-purple-800 px-2.5 py-0.5 rounded-full font-semibold">
               Pakistan
             </span>
           </div>
           <div className="flex items-center space-x-4">
             {isAuthenticated ? (
               <div className="flex items-center space-x-4">
-                <span className="text-sm text-gray-700 hidden sm:inline">
+                <span className="text-sm text-slate-600 hidden sm:inline font-medium">
                   {user?.email}
                 </span>
                 <Link
                   href="/restaurant/dashboard"
-                  className="text-sm text-gray-600 hover:text-red-600 font-medium"
+                  className="text-sm text-purple-700 hover:text-purple-900 font-semibold"
                 >
                   Dashboards
                 </Link>
                 <button
                   onClick={() => signOut()}
-                  className="bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-md text-sm font-medium transition"
+                  className="bg-purple-50 hover:bg-purple-100 text-purple-700 px-4 py-2 rounded-lg text-sm font-semibold transition"
                 >
                   Sign Out
                 </button>
@@ -42,13 +52,13 @@ export default function HomePage() {
               <div className="flex items-center space-x-3">
                 <Link
                   href="/auth/login"
-                  className="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium"
+                  className="text-slate-700 hover:text-purple-700 px-3 py-2 rounded-lg text-sm font-semibold transition"
                 >
                   Sign In
                 </Link>
                 <Link
                   href="/auth/signup"
-                  className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md text-sm font-medium transition shadow-sm"
+                  className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition shadow-md shadow-purple-200"
                 >
                   Sign Up
                 </Link>
@@ -59,83 +69,97 @@ export default function HomePage() {
       </header>
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-red-600 to-rose-500 text-white py-16 px-4 sm:px-6 lg:px-8 text-center">
-        <div className="max-w-3xl mx-auto">
-          <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4">
-            Great food, delivered fast to your door.
+      <section className="bg-gradient-to-br from-purple-900 via-indigo-900 to-slate-900 text-white py-20 px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(168,85,247,0.15),transparent_50%)]"></div>
+        <div className="max-w-4xl mx-auto relative z-10">
+          <div className="inline-flex items-center space-x-2 bg-purple-500/20 text-purple-300 px-4 py-1.5 rounded-full text-xs font-semibold mb-6 border border-purple-500/30">
+            <span>✨ Now delivering across Karachi, Lahore & Islamabad</span>
+          </div>
+          <h1 className="text-4xl sm:text-6xl font-black tracking-tight mb-6 leading-tight">
+            Gourmet food, delivered <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">lightning fast</span>.
           </h1>
-          <p className="text-lg sm:text-xl text-red-100 mb-8">
-            Order from the best local restaurants in Karachi, Lahore, Islamabad and across Pakistan.
+          <p className="text-lg sm:text-xl text-purple-200/80 mb-10 max-w-2xl mx-auto font-medium">
+            Discover top-rated local kitchens, artisanal bakeries, and authentic local cuisines at your doorstep.
           </p>
-          <div className="bg-white p-2 rounded-lg shadow-lg max-w-xl mx-auto flex items-center">
+
+          <form onSubmit={handleFindFood} className="bg-white p-2.5 rounded-2xl shadow-2xl shadow-purple-950/50 max-w-2xl mx-auto flex items-center border border-purple-100">
+            <div className="flex items-center pl-3 text-slate-400">
+              <MapPin className="w-5 h-5 text-purple-600" />
+            </div>
             <input
               type="text"
-              placeholder="Enter your delivery area (e.g. Gulshan, DHA)..."
-              className="w-full px-4 py-2 text-gray-800 focus:outline-none text-sm"
+              value={area}
+              onChange={(e) => setArea(e.target.value)}
+              placeholder="Enter your delivery area (e.g. Gulshan, DHA, Clifton)..."
+              className="w-full px-3 py-3 text-slate-800 placeholder-slate-400 focus:outline-none text-sm font-medium bg-transparent"
             />
-            <button className="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-md font-medium text-sm transition whitespace-nowrap">
-              Find Food
+            <button
+              type="submit"
+              className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white px-8 py-3.5 rounded-xl font-bold text-sm transition shadow-lg shadow-purple-600/30 flex items-center space-x-2 whitespace-nowrap cursor-pointer"
+            >
+              <span>Find Food</span>
+              <ArrowRight className="w-4 h-4" />
             </button>
-          </div>
+          </form>
         </div>
       </section>
 
       {/* Main Content / Features */}
-      <main className="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-          <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm text-center">
-            <div className="w-12 h-12 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-xl">
-              1
+      <main className="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          <div className="bg-white p-8 rounded-2xl border border-purple-100 shadow-xl shadow-purple-50/50 text-center hover:border-purple-200 transition">
+            <div className="w-14 h-14 bg-purple-100 text-purple-700 rounded-2xl flex items-center justify-center mx-auto mb-6 font-black text-2xl shadow-inner">
+              <Utensils className="w-7 h-7" />
             </div>
-            <h3 className="font-semibold text-lg text-gray-900 mb-2">Choose Restaurant</h3>
-            <p className="text-gray-600 text-sm">
-              Browse approved local restaurants offering authentic Pakistani and continental cuisines.
+            <h3 className="font-bold text-xl text-slate-900 mb-3">Choose Restaurant</h3>
+            <p className="text-slate-600 text-sm leading-relaxed">
+              Browse approved local restaurants offering authentic Pakistani and continental cuisines with live ratings.
             </p>
           </div>
-          <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm text-center">
-            <div className="w-12 h-12 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-xl">
-              2
+          <div className="bg-white p-8 rounded-2xl border border-purple-100 shadow-xl shadow-purple-50/50 text-center hover:border-purple-200 transition">
+            <div className="w-14 h-14 bg-purple-100 text-purple-700 rounded-2xl flex items-center justify-center mx-auto mb-6 font-black text-2xl shadow-inner">
+              <ShieldCheck className="w-7 h-7" />
             </div>
-            <h3 className="font-semibold text-lg text-gray-900 mb-2">Select Your Meal</h3>
-            <p className="text-gray-600 text-sm">
-              Explore rich menus with transparent PKR pricing and custom options.
+            <h3 className="font-bold text-xl text-slate-900 mb-3">Select Your Meal</h3>
+            <p className="text-slate-600 text-sm leading-relaxed">
+              Explore rich menus with transparent PKR pricing, customized add-ons, and instant cart updates.
             </p>
           </div>
-          <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm text-center">
-            <div className="w-12 h-12 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-xl">
-              3
+          <div className="bg-white p-8 rounded-2xl border border-purple-100 shadow-xl shadow-purple-50/50 text-center hover:border-purple-200 transition">
+            <div className="w-14 h-14 bg-purple-100 text-purple-700 rounded-2xl flex items-center justify-center mx-auto mb-6 font-black text-2xl shadow-inner">
+              <Clock className="w-7 h-7" />
             </div>
-            <h3 className="font-semibold text-lg text-gray-900 mb-2">Fast Delivery</h3>
-            <p className="text-gray-600 text-sm">
-              Track your rider in real-time until your hot meal arrives at your doorstep.
+            <h3 className="font-bold text-xl text-slate-900 mb-3">Fast Delivery</h3>
+            <p className="text-slate-600 text-sm leading-relaxed">
+              Track your rider in real-time until your hot, freshly prepared meal arrives at your doorstep.
             </p>
           </div>
         </div>
 
         {isAuthenticated && (
-          <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-            <h2 className="text-xl font-bold text-gray-900 mb-4">Quick Links & Dashboards</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="bg-white border border-purple-100 rounded-2xl p-8 shadow-xl shadow-purple-50/50">
+            <h2 className="text-2xl font-black text-slate-900 mb-6">Quick Links & Dashboards</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               <Link
                 href="/restaurant/dashboard"
-                className="p-4 border border-gray-200 rounded-lg hover:border-red-500 hover:shadow-md transition text-center"
+                className="p-6 border border-purple-100 rounded-xl hover:border-purple-500 hover:shadow-lg transition text-center bg-purple-50/30 group"
               >
-                <h4 className="font-semibold text-gray-900">Restaurant Owner</h4>
-                <p className="text-xs text-gray-500 mt-1">Manage menu & orders</p>
+                <h4 className="font-bold text-slate-900 group-hover:text-purple-700 transition">Restaurant Owner</h4>
+                <p className="text-xs text-slate-500 mt-1">Manage menu & orders</p>
               </Link>
               <Link
                 href="/rider/dashboard"
-                className="p-4 border border-gray-200 rounded-lg hover:border-red-500 hover:shadow-md transition text-center"
+                className="p-6 border border-purple-100 rounded-xl hover:border-purple-500 hover:shadow-lg transition text-center bg-purple-50/30 group"
               >
-                <h4 className="font-semibold text-gray-900">Delivery Rider</h4>
-                <p className="text-xs text-gray-500 mt-1">View assigned deliveries</p>
+                <h4 className="font-bold text-slate-900 group-hover:text-purple-700 transition">Delivery Rider</h4>
+                <p className="text-xs text-slate-500 mt-1">View assigned deliveries</p>
               </Link>
               <Link
                 href="/admin/dashboard"
-                className="p-4 border border-gray-200 rounded-lg hover:border-red-500 hover:shadow-md transition text-center"
+                className="p-6 border border-purple-100 rounded-xl hover:border-purple-500 hover:shadow-lg transition text-center bg-purple-50/30 group"
               >
-                <h4 className="font-semibold text-gray-900">Admin Control</h4>
-                <p className="text-xs text-gray-500 mt-1">Platform management & RLS</p>
+                <h4 className="font-bold text-slate-900 group-hover:text-purple-700 transition">Admin Control</h4>
+                <p className="text-xs text-slate-500 mt-1">Platform management & RLS</p>
               </Link>
             </div>
           </div>
@@ -143,7 +167,7 @@ export default function HomePage() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-white border-t border-gray-200 py-8 text-center text-sm text-gray-500">
+      <footer className="bg-white border-t border-purple-100 py-10 text-center text-sm text-slate-500">
         <p>&copy; {new Date().getFullYear()} Foodverse Pakistan. All rights reserved.</p>
       </footer>
     </div>
