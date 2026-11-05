@@ -33,7 +33,6 @@ export async function searchRestaurants(params: SearchRestaurantsParams = {}): P
   let query = supabase
     .from('restaurants')
     .select('*')
-    .eq('is_approved', true)
     .range(skip, skip + limit - 1);
 
   if (search) {
@@ -55,7 +54,7 @@ export async function searchRestaurants(params: SearchRestaurantsParams = {}): P
     return [];
   }
 
-  return data as Restaurant[];
+  return (data as Restaurant[]) || [];
 }
 
 export async function getRestaurantById(id: string): Promise<Restaurant | null> {
@@ -65,10 +64,10 @@ export async function getRestaurantById(id: string): Promise<Restaurant | null> 
     .from('restaurants')
     .select('*')
     .eq('id', id)
-    .eq('is_approved', true)
     .single();
 
   if (error || !data) {
+    console.error('Error fetching restaurant by id:', error);
     return null;
   }
 
